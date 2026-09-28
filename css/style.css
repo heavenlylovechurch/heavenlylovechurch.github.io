@@ -451,8 +451,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hist-wrap {
-  margin-top: 56px;
-  padding-top: 36px;
+  margin-top: 96px;
+  padding-top: 64px;
   border-top: 1px solid #e4d8c4;
 }
 .hist-title {
