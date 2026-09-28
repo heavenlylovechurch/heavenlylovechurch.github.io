@@ -219,3 +219,13 @@ a { color: inherit; text-decoration: none; }
   .about-col { grid-template-columns: 1fr; }
   .about-col img { height: 280px; }
 }
+
+.tbl { width: 100%; border-collapse: collapse; margin: 10px 0 28px; font-size: 14px; }
+.tbl th { background: #2c4a5e; color: #fff; font-weight: 500; padding: 10px 12px; text-align: left; }
+.tbl td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.tbl tr:nth-child(even) td { background: #faf6ef; }
+.subhead { font-family: "Noto Serif KR", serif; font-size: 18px; margin: 22px 0 8px; }
+.tl { border-left: 2px solid var(--gold); padding-left: 16px; margin: 12px 0 28px; }
+.tl p { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+.tl b { color: var(--navy); display: inline-block; min-width: 92px; }
+.pastor { width: 100%; max-width: 280px; border-radius: 10px; margin: 16px 0; }
