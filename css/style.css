@@ -198,3 +198,24 @@ a { color: inherit; text-decoration: none; }
   .time-row { grid-template-columns: 1fr; gap: 4px; }
   .hero { min-height: 78vh; }
 }
+
+
+.yt-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.yt-row img { width: 28px; height: 28px; }
+.yt-row span { font-size: 13px; color: #c00; font-weight: 600; }
+.yt-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 14px; padding: 16px 18px; margin-top: 22px;
+}
+.yt-banner img.yt { width: 36px; height: 36px; }
+.about-col {
+  display: grid; grid-template-columns: 0.9fr 1.1fr;
+  gap: 32px; align-items: start;
+}
+.about-col img { width: 100%; height: 520px; object-fit: cover; border-radius: 12px; }
+.about-col p { margin-bottom: 12px; color: var(--muted); font-size: 14px; }
+@media (max-width: 820px) {
+  .about-col { grid-template-columns: 1fr; }
+  .about-col img { height: 280px; }
+}
