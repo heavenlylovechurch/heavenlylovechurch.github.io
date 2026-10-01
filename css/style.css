@@ -618,3 +618,27 @@ body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
 .page-inner .has-sub > a.active { color: var(--navy) !important; }
 .sub { z-index: 80; min-width: 160px; }
 .hist-only { margin-top: 8px; padding-top: 0; border-top: 0; }
+
+.greet-lead {
+  font-family: "Noto Serif KR", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.55;
+  color: var(--navy);
+  margin-bottom: 22px;
+}
+.greet-em {
+  font-size: 1.12em;
+  font-weight: 700;
+  color: var(--navy);
+}
+.greet-sign {
+  margin-top: 22px;
+  font-size: 15px;
+  color: var(--navy);
+  font-weight: 600;
+}
+@media (max-width: 820px) {
+  .greet-lead { font-size: 22px; }
+}
