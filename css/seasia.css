@@ -17,7 +17,7 @@
 .page-seasia .sea-ministries + .sea-floors,
 .page-seasia .sea-floors + .sea-plan,
 .page-seasia .sea-plan + .sea-prep,
-.page-seasia .sea-prep + .sea-end { margin-top: 20px; }
+.page-seasia .sea-prep + .sea-end { margin-top: 0; }
 
 .page-seasia .sea-intro .wrap,
 .page-seasia .sea-ministries .wrap,
@@ -492,7 +492,7 @@
   .page-seasia .sea-ministries + .sea-floors,
   .page-seasia .sea-floors + .sea-plan,
   .page-seasia .sea-plan + .sea-prep,
-  .page-seasia .sea-prep + .sea-end { margin-top: 12px; }
+  .page-seasia .sea-prep + .sea-end { margin-top: 0; }
   .page-seasia .sea-center h2,
   .page-seasia .sea-floors h2 { font-size: 24px; }
   .page-seasia .sea-3 { gap: 10px; margin-top: 28px; }
