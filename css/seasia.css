@@ -13,6 +13,27 @@
 .page-seasia .sea-hero .sea-en { margin-bottom: 24px; }
 .page-seasia .sea-hero .sea-badge { margin-bottom: 20px; }
 
+.page-seasia .sea-image-note {
+  position: absolute;
+  z-index: 2;
+  left: 12px;
+  bottom: 10px;
+  max-width: calc(100% - 24px);
+  margin: 0;
+  padding: 3px 7px;
+  border-radius: 3px;
+  color: #49535d;
+  background: rgba(255, 255, 255, .78);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+
 .page-seasia .sea-intro + .sea-ministries,
 .page-seasia .sea-ministries + .sea-floors,
 .page-seasia .sea-floors + .sea-plan,
@@ -234,7 +255,12 @@
   gap: 44px;
   align-items: center;
 }
-.page-seasia .sea-split > img {
+.page-seasia .sea-building-figure {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+}
+.page-seasia .sea-building-figure > img {
   width: 100%;
   height: auto;
   margin: 0;
@@ -487,6 +513,13 @@
 }
 
 @media (max-width: 540px) {
+  .page-seasia .sea-image-note {
+    left: 8px;
+    bottom: 8px;
+    max-width: calc(100% - 16px);
+    padding: 3px 6px;
+    font-size: 10px;
+  }
   .page-seasia .sea-intro { padding: 40px 0; }
   .page-seasia .sea-intro + .sea-ministries,
   .page-seasia .sea-ministries + .sea-floors,
