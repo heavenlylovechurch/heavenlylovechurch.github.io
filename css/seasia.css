@@ -436,12 +436,21 @@
   line-height: 1.7;
   word-break: keep-all;
 }
-.page-seasia .sea-end a {
+.page-seasia .sea-end-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.page-seasia .sea-end a,
+.page-seasia .sea-end .sea-support-account {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 20px;
+  margin-top: 0;
   padding: 8px 22px;
   border: 2px solid #fff;
   border-radius: 999px;
@@ -450,6 +459,17 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1.6;
+}
+.page-seasia .sea-end .sea-support-account {
+  max-width: 100%;
+  word-break: keep-all;
+}
+.page-seasia .sea-end .sea-bank-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #fff;
 }
 .page-seasia .sea-end .sea-phone {
   position: static;
