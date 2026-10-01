@@ -603,3 +603,18 @@ a { color: inherit; text-decoration: none; }
 .page-inner .has-sub > a { color: #6f675e !important; }
 .page-inner .has-sub > a.active { color: var(--navy) !important; }
 body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
+
+.site-header, .header-inner, .nav, .has-sub { overflow: visible; }
+.nav { flex-wrap: wrap; gap: 16px 18px; }
+.has-sub { position: relative; display: flex; align-items: center; }
+.has-sub > a {
+  font-size: 13px;
+  line-height: 1;
+  color: rgba(255,255,255,0.82) !important;
+}
+.page-inner .has-sub > a { color: #6f675e !important; }
+.page-inner .has-sub > a.active, body:not(.page-inner) .has-sub > a.active { color: inherit; }
+body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
+.page-inner .has-sub > a.active { color: var(--navy) !important; }
+.sub { z-index: 80; min-width: 160px; }
+.hist-only { margin-top: 8px; padding-top: 0; border-top: 0; }
