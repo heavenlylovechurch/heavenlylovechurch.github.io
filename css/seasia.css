@@ -21,9 +21,9 @@
   max-width: calc(100% - 24px);
   margin: 0;
   padding: 3px 7px;
-  border-radius: 3px;
   color: #49535d;
-  background: rgba(255, 255, 255, .78);
+  background: none;
+  opacity: .8;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 11px;
   font-weight: 400;
@@ -32,6 +32,10 @@
   word-break: keep-all;
   overflow-wrap: anywhere;
   pointer-events: none;
+}
+
+.page-seasia .sea-building-figure .sea-image-note {
+  color: #fff;
 }
 
 .page-seasia .sea-intro + .sea-ministries,
