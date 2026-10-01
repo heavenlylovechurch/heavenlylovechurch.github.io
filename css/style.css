@@ -815,3 +815,10 @@ body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
   .sea-3, .sea-5, .sea-road, .sea-split { grid-template-columns: 1fr; }
   .sea-hero h1 { font-size: 32px; }
 }
+
+.sea-3 svg, .sea-5 svg { width: 42px; height: 42px; display: block; margin: 0 auto 8px; }
+.sea-road { position: relative; }
+.sea-road::before { content: ""; position: absolute; top: 18px; left: 8%; right: 8%; height: 1px; background: #d7c196; }
+.sea-road span { position: relative; z-index: 1; background: #f6f1e8; padding: 0 8px; }
+.sea-split ul { list-style: none; }
+.sea-split li::before { content: "•"; color: #c2a36c; margin-right: 8px; }
