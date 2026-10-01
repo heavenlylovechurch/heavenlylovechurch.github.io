@@ -23,9 +23,9 @@
   padding: 3px 7px;
   color: #49535d;
   background: none;
-  opacity: .8;
+  opacity: .6;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 11px;
+  font-size: 7.7px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.02em;
@@ -522,7 +522,7 @@
     bottom: 8px;
     max-width: calc(100% - 16px);
     padding: 3px 6px;
-    font-size: 10px;
+    font-size: 7px;
   }
   .page-seasia .sea-intro { padding: 40px 0; }
   .page-seasia .sea-intro + .sea-ministries,
