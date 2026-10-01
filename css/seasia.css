@@ -580,3 +580,27 @@
   .page-seasia .sea-end p { font-size: 13px; }
   .page-seasia .sea-end .wrap { padding: 36px 20px; }
 }
+
+@media (max-width: 540px) {
+  .page-seasia .sea-hero { min-height: 0; }
+  .page-seasia .sea-hero::after {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(247, 244, 238, .96), rgba(247, 244, 238, .78));
+  }
+  .page-seasia .sea-hero .wrap {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 56px 0 72px;
+  }
+  .page-seasia .sea-hero h1 { font-size: clamp(28px, 7.5vw, 34px); line-height: 1.35; }
+  .page-seasia .sea-hero .sea-gold { font-size: 18px; line-height: 1.5; }
+  .page-seasia .sea-hero .sea-en { font-size: 13px; }
+  .page-seasia .sea-intro .sea-3 { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .page-seasia .sea-road { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .page-seasia .sea-heading-row { display: block; }
+  .page-seasia .sea-plan-badge { margin-top: 10px; }
+  .page-seasia .sea-floor-details { padding-left: 0; }
+  .page-seasia .sea-floor-details li::after { display: none; }
+  .page-seasia .sea-end-actions { flex-direction: column; align-items: center; }
+  .page-seasia .sea-end .sea-support-account { padding: 8px 12px; }
+}
