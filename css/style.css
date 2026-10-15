@@ -526,6 +526,7 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   border-radius: 12px;
 }
+.band-inner .welcome-photo { object-position: center 18%; }
 .band-inner .home-map {
   display: block;
   width: 100%;
