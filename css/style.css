@@ -812,11 +812,12 @@ body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
 .choir-copy > p:not(.choir-kicker):not(.choir-sub) { margin: 17px auto; }
 .choir-copy .choir-motto { font-family: "Noto Serif KR", serif; color: #1d3557; font-size: 19px; margin: 36px auto 26px; line-height: 1.75; }
 .choir-scripture { min-width: 0; border-left: 1px solid #d8c7ac; padding: 0 0 0 36px; display: flex; flex-direction: column; }
-.choir-bible-icon { display: block; width: 80px; height: 64px; margin: 0 0 16px; }
-.choir-scripture h2 { font-family: "Noto Serif KR", serif; color: #1d3557; font-size: 22px; margin: 0 0 25px; }
+.choir-bible-photo { display: block; width: 100%; height: 190px; object-fit: cover; object-position: center 60%; border-radius: 9px; margin: 0 0 20px; }
+.choir-scripture h2 { font-family: "Noto Serif KR", serif; color: #1d3557; font-size: 22px; margin: 0 0 14px; }
 .choir-scripture h2 span { font-family: "Noto Sans KR", sans-serif; color: #8a8176; font-size: 13px; font-weight: 400; }
-.choir-verses { margin: 0; padding-left: 25px; color: #514c45; font-size: 15px; line-height: 1.85; flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
-.choir-verses li { padding-left: 5px; }
+.choir-verses { margin: 0; padding-left: 25px; color: #514c45; font-size: 15px; line-height: 1.65; }
+.choir-verses li { padding-left: 5px; margin-bottom: 8px; }
+.choir-verses li:last-child { margin-bottom: 0; }
 .choir-verses li::marker { color: #b08a45; font-weight: 600; }
 .choir-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; padding-top: 28px; border-top: 1px solid #eadfcd; }
 .choir-facts article { display: flex; gap: 12px; align-items: flex-start; }
@@ -843,7 +844,7 @@ body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
   .choir-line-break { display: none; }
   .choir-scripture { border-left: 0; border-top: 1px solid #d8c7ac; margin-top: 34px; padding: 28px 0 0; }
   .choir-scripture h2 { margin-bottom: 16px; }
-  .choir-verses { gap: 16px; }
+  .choir-bible-photo { height: 180px; }
 }
 @media (max-width: 820px) {
   .choir-hero, .choir-facts, .choir-vids, .choir-join .wrap, .choir-vid-head { grid-template-columns: 1fr; display: block; }
