@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=50">
+  <link rel="stylesheet" href="css/style.css?v=51">
 </head>
 <body class="page-inner">
   <header class="site-header">
@@ -43,15 +43,15 @@
   <div class="wrap page-hero">
     <p class="eyebrow">SPACE</p>
     <h1>교회공간안내</h1>
-    <p class="section-desc">층을 누르면 사진을 볼 수 있습니다. 1층은 실제 공간 사진이며, 다른 층의 사진은 임시입니다.</p>
+    <p class="section-desc">층을 누르면 사진을 볼 수 있습니다. 1·2층은 실제 공간 사진이며, 3·4층의 사진은 임시입니다.</p>
   </div>
   <section class="section"><div class="wrap floor-list">
     <button class="floor floor-first" data-floor="1">
       <img src="images/floor1-main.jpg" alt="1층 카페와 식당 전경">
       <div><strong>1층</strong><span>사무실 · 식당 · 카페</span></div>
     </button>
-    <button class="floor" data-floor="2">
-      <img src="images/floor2.jpg" alt="">
+    <button class="floor floor-second" data-floor="2">
+      <img src="images/floor2-main.jpg" alt="2층 본당 전경">
       <div><strong>2층</strong><span>본당 · 로비</span></div>
     </button>
     <button class="floor" data-floor="3">
@@ -70,9 +70,14 @@
       <div class="modal-grid" id="modal-grid"></div>
     </div>
   </div>
-  <div class="viewer" id="viewer" hidden>
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="공간 사진 크게 보기" hidden>
     <button class="modal-x" type="button">닫기</button>
-    <img id="viewer-img" alt="">
+    <button class="viewer-arrow viewer-prev" type="button" aria-label="이전 사진">‹</button>
+    <figure class="viewer-stage">
+      <img id="viewer-img" alt="">
+      <figcaption id="viewer-count" aria-live="polite"></figcaption>
+    </figure>
+    <button class="viewer-arrow viewer-next" type="button" aria-label="다음 사진">›</button>
   </div>
   <script>
     const floors = {
@@ -82,7 +87,11 @@
         "images/floor1-dining-wide.jpg", "images/floor1-music.jpg",
         "images/floor1-dining-kitchen.jpg", "images/floor1-dining.jpg"
       ] },
-      2: { title: "2층", photos: ["images/floor2.jpg", "images/sanctuary.jpg", "images/worship.jpg"] },
+      2: { title: "2층", photos: [
+        "images/floor2-main.jpg", "images/floor2-lobby.jpg", "images/floor2-fellowship.jpg",
+        "images/floor2-lobby-sanctuary.jpg", "images/floor2-sanctuary-left.jpg",
+        "images/floor2-sanctuary-right.jpg"
+      ] },
       3: { title: "3층", photos: ["images/floor3.jpg", "images/detail.jpg"] },
       4: { title: "4층", photos: ["images/floor4.jpg", "images/hero.jpg"] }
     };
@@ -91,25 +100,57 @@
     const title = document.getElementById("modal-title");
     const viewer = document.getElementById("viewer");
     const vimg = document.getElementById("viewer-img");
+    const counter = document.getElementById("viewer-count");
+    let activePhotos = [];
+    let activeIndex = 0;
+    let activeTitle = "";
+    let activeFloor = "";
+    function showPhoto(index) {
+      activeIndex = (index + activePhotos.length) % activePhotos.length;
+      vimg.src = activePhotos[activeIndex];
+      vimg.alt = `${activeTitle} 공간 사진 ${activeIndex + 1}`;
+      counter.textContent = `${activeIndex + 1} / ${activePhotos.length}`;
+      viewer.classList.toggle("real-floor-image", activeFloor === "1" || activeFloor === "2");
+      viewer.hidden = false;
+    }
+    function closeViewer() { viewer.hidden = true; }
     document.querySelectorAll(".floor").forEach(btn => {
       btn.addEventListener("click", () => {
         const data = floors[btn.dataset.floor];
         title.textContent = data.title;
-        grid.classList.toggle("first-floor-images", btn.dataset.floor === "1");
+        activePhotos = data.photos;
+        activeTitle = data.title;
+        activeFloor = btn.dataset.floor;
+        grid.classList.toggle("real-floor-images", activeFloor === "1" || activeFloor === "2");
         grid.innerHTML = data.photos.map((src, i) => `<button type="button" class="thumb" aria-label="${data.title} 사진 ${i + 1} 크게 보기"><img src="${src}" alt="${data.title} 공간 사진 ${i + 1}" loading="lazy"></button>`).join("");
         modal.hidden = false;
-        grid.querySelectorAll(".thumb").forEach(th => th.addEventListener("click", () => {
-          vimg.src = th.querySelector("img").src;
-          vimg.alt = th.querySelector("img").alt;
-          viewer.classList.toggle("first-floor-image", btn.dataset.floor === "1");
-          viewer.hidden = false;
-        }));
+        grid.querySelectorAll(".thumb").forEach((th, i) => th.addEventListener("click", () => showPhoto(i)));
       });
     });
     modal.querySelector(".modal-x").onclick = () => modal.hidden = true;
     modal.addEventListener("click", e => { if (e.target === modal) modal.hidden = true; });
-    viewer.querySelector(".modal-x").onclick = () => viewer.hidden = true;
-    viewer.addEventListener("click", e => { if (e.target === viewer) viewer.hidden = true; });
+    viewer.querySelector(".modal-x").onclick = closeViewer;
+    viewer.querySelector(".viewer-prev").onclick = () => showPhoto(activeIndex - 1);
+    viewer.querySelector(".viewer-next").onclick = () => showPhoto(activeIndex + 1);
+    viewer.addEventListener("click", e => { if (e.target === viewer) closeViewer(); });
+    document.addEventListener("keydown", e => {
+      if (!viewer.hidden) {
+        if (e.key === "ArrowLeft") { e.preventDefault(); showPhoto(activeIndex - 1); }
+        if (e.key === "ArrowRight") { e.preventDefault(); showPhoto(activeIndex + 1); }
+        if (e.key === "Escape") closeViewer();
+      } else if (!modal.hidden && e.key === "Escape") modal.hidden = true;
+    });
+    let touchStart = null;
+    viewer.addEventListener("touchstart", e => {
+      if (e.touches.length === 1) touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }, { passive: true });
+    viewer.addEventListener("touchend", e => {
+      if (!touchStart || !e.changedTouches.length) return;
+      const dx = e.changedTouches[0].clientX - touchStart.x;
+      const dy = e.changedTouches[0].clientY - touchStart.y;
+      touchStart = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) showPhoto(activeIndex + (dx < 0 ? 1 : -1));
+    }, { passive: true });
   </script>
 
   <script src="js/main.js?v=2"></script>
