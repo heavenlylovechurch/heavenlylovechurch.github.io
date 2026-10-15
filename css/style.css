@@ -309,14 +309,12 @@ a { color: inherit; text-decoration: none; }
   gap: 10px;
 }
 .mark {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  overflow: hidden;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
-  background: #c2a36c;
+  background: transparent;
 }
-.mark img { width: 100%; height: 100%; display: block; }
+.mark img { width: 100%; height: 100%; display: block; object-fit: contain; }
 .brand {
   font-family: "Noto Serif KR", serif;
   font-size: 16px;
