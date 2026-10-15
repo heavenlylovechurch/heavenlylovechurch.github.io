@@ -604,3 +604,40 @@
   .page-seasia .sea-end-actions { flex-direction: column; align-items: center; }
   .page-seasia .sea-end .sea-support-account { padding: 8px 12px; }
 }
+
+@media (max-width: 820px) {
+  .page-seasia .sea-hero::after {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(247, 244, 238, .96), rgba(247, 244, 238, .74));
+  }
+  .page-seasia .sea-hero .wrap {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 64px 0 76px;
+  }
+  .page-seasia .sea-hero h1 { font-size: clamp(28px, 6vw, 38px); line-height: 1.4; }
+  .page-seasia .sea-end-actions > * { min-width: 0; }
+  .page-seasia .sea-end .sea-support-account span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+}
+
+@media (max-width: 540px) {
+  .page-seasia .sea-hero .wrap { padding: 52px 0 72px; }
+  .page-seasia .sea-hero h1 { font-size: clamp(26px, 7vw, 32px); }
+  .page-seasia .sea-image-note { font-size: 9px; }
+  .page-seasia .sea-end-actions { align-items: stretch; }
+  .page-seasia .sea-end a,
+  .page-seasia .sea-end .sea-support-account {
+    width: 100%;
+    max-width: 360px;
+    min-height: 44px;
+    border-radius: 18px;
+    padding: 9px 12px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .page-seasia .sea-end .sea-bank-icon { flex: 0 0 16px; }
+}

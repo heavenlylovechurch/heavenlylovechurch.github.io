@@ -2,7 +2,7 @@ const menuButton = document.querySelector(".menu-btn");
 const navigation = document.querySelector(".nav");
 
 if (menuButton && navigation) {
-  const mobileView = window.matchMedia("(max-width: 820px)");
+  const mobileView = window.matchMedia("(max-width: 1100px)");
   const submenuGroup = navigation.querySelector(".has-sub");
   const submenuLink = submenuGroup ? submenuGroup.querySelector(":scope > a") : null;
   const submenu = submenuGroup ? submenuGroup.querySelector(":scope > .sub") : null;
