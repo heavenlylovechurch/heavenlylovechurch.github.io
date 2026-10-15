@@ -800,23 +800,23 @@ body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
   .nf-steps article:not(:last-child)::after, .nf-steps article:not(:last-child)::before { display: none; }
 }
 
-.choir-hero { display: block; max-width: 920px; text-align: center; }
-.choir-copy { max-width: 800px; margin: 0 auto; }
-.choir-kicker { letter-spacing: .2em; font-size: 12px; color: #b08a45; text-align: center; }
+.choir-hero { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); gap: 38px; max-width: 1120px; align-items: start; text-align: left; }
+.choir-copy { min-width: 0; }
+.choir-kicker { letter-spacing: .2em; font-size: 12px; color: #b08a45; text-align: left; }
 .choir-kicker::before, .choir-kicker::after { content: ""; display: inline-block; width: 42px; height: 1px; background: #c2a36c; vertical-align: middle; margin: 0 10px; }
-.choir-hero h1 { font-family: "Noto Serif KR", serif; font-size: 46px; text-align: center; color: #1d3557; margin: 8px 0; }
-.choir-hero .choir-sub { text-align: center; color: #b08a45; font-family: "Noto Serif KR", serif; font-size: 20px; margin-bottom: 8px; }
-.choir-sub::after { content: ""; display: block; width: 36px; height: 1px; background: #c2a36c; margin: 12px auto 0; }
+.choir-hero h1 { font-family: "Noto Serif KR", serif; font-size: 46px; text-align: left; color: #1d3557; margin: 8px 0; }
+.choir-hero .choir-sub { text-align: left; color: #b08a45; font-family: "Noto Serif KR", serif; font-size: 20px; margin-bottom: 8px; }
+.choir-sub::after { content: ""; display: block; width: 36px; height: 1px; background: #c2a36c; margin: 12px 0 0; }
 .choir-hero h2 { font-size: 18px; color: #1d3557; margin: 18px 0 8px; }
 .choir-hero p { color: #6f675e; line-height: 1.9; font-size: 15px; }
 .choir-copy > p:not(.choir-kicker):not(.choir-sub) { margin: 17px auto; }
 .choir-copy .choir-motto { font-family: "Noto Serif KR", serif; color: #1d3557; font-size: 19px; margin: 36px auto 26px; line-height: 1.75; }
-.choir-scripture { border-top: 1px solid #eadfcd; margin-top: 40px; padding: 34px 12px 8px; }
-.choir-scripture h2 { font-family: "Noto Serif KR", serif; color: #1d3557; font-size: 22px; margin: 0 0 14px; }
+.choir-scripture { min-width: 0; border-left: 1px solid #d8c7ac; padding: 2px 0 4px 36px; }
+.choir-scripture h2 { font-family: "Noto Serif KR", serif; color: #1d3557; font-size: 22px; margin: 0 0 25px; }
 .choir-scripture h2 span { font-family: "Noto Sans KR", sans-serif; color: #8a8176; font-size: 13px; font-weight: 400; }
-.choir-scripture p { margin: 0 auto 14px; }
-.choir-scripture p span { white-space: nowrap; font-size: 13px; color: #8a8176; }
-.choir-scripture a { color: #1d3557; text-decoration: underline; text-underline-offset: 4px; font-size: 14px; }
+.choir-verses { margin: 0; padding-left: 25px; color: #514c45; font-size: 15px; line-height: 1.85; }
+.choir-verses li { padding-left: 5px; margin: 0 0 18px; }
+.choir-verses li::marker { color: #b08a45; font-weight: 600; }
 .choir-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; padding-top: 28px; border-top: 1px solid #eadfcd; }
 .choir-facts article { display: flex; gap: 12px; align-items: flex-start; }
 .cf-ico { width: 46px; height: 46px; border-radius: 50%; background: #f6efe2; color: #b08a45; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -841,6 +841,8 @@ body:not(.page-inner) .has-sub > a.active { color: #fff !important; }
   .choir-hero, .choir-facts, .choir-vids, .choir-join .wrap, .choir-vid-head { grid-template-columns: 1fr; display: block; }
   .choir-hero h1 { font-size: clamp(29px, 8vw, 38px); }
   .choir-copy .choir-motto { font-size: 17px; }
+  .choir-scripture { border-left: 0; border-top: 1px solid #d8c7ac; margin-top: 34px; padding: 28px 0 0; }
+  .choir-scripture h2 { margin-bottom: 16px; }
   .choir-ask { border: 0; padding: 16px 0 0; }
 }
 
