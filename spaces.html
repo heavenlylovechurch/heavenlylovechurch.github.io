@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=49">
+  <link rel="stylesheet" href="css/style.css?v=50">
 </head>
 <body class="page-inner">
   <header class="site-header">
@@ -43,11 +43,11 @@
   <div class="wrap page-hero">
     <p class="eyebrow">SPACE</p>
     <h1>교회공간안내</h1>
-    <p class="section-desc">층을 누르면 사진을 볼 수 있습니다. 사진은 임시입니다.</p>
+    <p class="section-desc">층을 누르면 사진을 볼 수 있습니다. 1층은 실제 공간 사진이며, 다른 층의 사진은 임시입니다.</p>
   </div>
   <section class="section"><div class="wrap floor-list">
-    <button class="floor" data-floor="1">
-      <img src="images/floor1.jpg" alt="">
+    <button class="floor floor-first" data-floor="1">
+      <img src="images/floor1-main.jpg" alt="1층 카페와 식당 전경">
       <div><strong>1층</strong><span>사무실 · 식당 · 카페</span></div>
     </button>
     <button class="floor" data-floor="2">
@@ -76,7 +76,12 @@
   </div>
   <script>
     const floors = {
-      1: { title: "1층", photos: ["images/floor1.jpg", "images/about.jpg"] },
+      1: { title: "1층", photos: [
+        "images/floor1-main.jpg", "images/floor1-entrance.jpg", "images/floor1-cafe-wide.jpg",
+        "images/floor1-office.jpg", "images/floor1-cafe-counter.jpg", "images/floor1-cafe-seating.jpg",
+        "images/floor1-dining-wide.jpg", "images/floor1-music.jpg",
+        "images/floor1-dining-kitchen.jpg", "images/floor1-dining.jpg"
+      ] },
       2: { title: "2층", photos: ["images/floor2.jpg", "images/sanctuary.jpg", "images/worship.jpg"] },
       3: { title: "3층", photos: ["images/floor3.jpg", "images/detail.jpg"] },
       4: { title: "4층", photos: ["images/floor4.jpg", "images/hero.jpg"] }
@@ -90,10 +95,13 @@
       btn.addEventListener("click", () => {
         const data = floors[btn.dataset.floor];
         title.textContent = data.title;
-        grid.innerHTML = data.photos.map(src => `<button type="button" class="thumb"><img src="${src}" alt=""></button>`).join("");
+        grid.classList.toggle("first-floor-images", btn.dataset.floor === "1");
+        grid.innerHTML = data.photos.map((src, i) => `<button type="button" class="thumb" aria-label="${data.title} 사진 ${i + 1} 크게 보기"><img src="${src}" alt="${data.title} 공간 사진 ${i + 1}" loading="lazy"></button>`).join("");
         modal.hidden = false;
         grid.querySelectorAll(".thumb").forEach(th => th.addEventListener("click", () => {
           vimg.src = th.querySelector("img").src;
+          vimg.alt = th.querySelector("img").alt;
+          viewer.classList.toggle("first-floor-image", btn.dataset.floor === "1");
           viewer.hidden = false;
         }));
       });
