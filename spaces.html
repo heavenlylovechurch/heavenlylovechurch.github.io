@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=51">
+  <link rel="stylesheet" href="css/style.css?v=52">
 </head>
 <body class="page-inner">
   <header class="site-header">
@@ -43,7 +43,7 @@
   <div class="wrap page-hero">
     <p class="eyebrow">SPACE</p>
     <h1>교회공간안내</h1>
-    <p class="section-desc">층을 누르면 사진을 볼 수 있습니다. 1·2층은 실제 공간 사진이며, 3·4층의 사진은 임시입니다.</p>
+    <p class="section-desc">층을 누르면 사진을 볼 수 있습니다. 1~3층은 실제 공간 사진이며, 4층의 사진은 임시입니다.</p>
   </div>
   <section class="section"><div class="wrap floor-list">
     <button class="floor floor-first" data-floor="1">
@@ -54,8 +54,8 @@
       <img src="images/floor2-main.jpg" alt="2층 본당 전경">
       <div><strong>2층</strong><span>본당 · 로비</span></div>
     </button>
-    <button class="floor" data-floor="3">
-      <img src="images/floor3.jpg" alt="">
+    <button class="floor floor-third" data-floor="3">
+      <img src="images/floor3-main.jpg" alt="3층 유초등부 예배 공간">
       <div><strong>3층</strong><span>유초등부 예배실</span></div>
     </button>
     <button class="floor" data-floor="4">
@@ -72,12 +72,14 @@
   </div>
   <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="공간 사진 크게 보기" hidden>
     <button class="modal-x" type="button">닫기</button>
-    <button class="viewer-arrow viewer-prev" type="button" aria-label="이전 사진">‹</button>
     <figure class="viewer-stage">
-      <img id="viewer-img" alt="">
+      <div class="viewer-image-wrap">
+        <img id="viewer-img" alt="">
+        <button class="viewer-arrow viewer-prev" type="button" aria-label="이전 사진">‹</button>
+        <button class="viewer-arrow viewer-next" type="button" aria-label="다음 사진">›</button>
+      </div>
       <figcaption id="viewer-count" aria-live="polite"></figcaption>
     </figure>
-    <button class="viewer-arrow viewer-next" type="button" aria-label="다음 사진">›</button>
   </div>
   <script>
     const floors = {
@@ -92,26 +94,39 @@
         "images/floor2-lobby-sanctuary.jpg", "images/floor2-sanctuary-left.jpg",
         "images/floor2-sanctuary-right.jpg"
       ] },
-      3: { title: "3층", photos: ["images/floor3.jpg", "images/detail.jpg"] },
+      3: { title: "3층", photos: [
+        "images/floor3-main.jpg", "images/floor3-entry.jpg", "images/floor3-window.jpg",
+        "images/floor3-overview.jpg", "images/floor3-children.jpg", "images/floor3-balcony.jpg"
+      ] },
       4: { title: "4층", photos: ["images/floor4.jpg", "images/hero.jpg"] }
     };
     const modal = document.getElementById("modal");
     const grid = document.getElementById("modal-grid");
     const title = document.getElementById("modal-title");
     const viewer = document.getElementById("viewer");
+    const stage = viewer.querySelector(".viewer-stage");
     const vimg = document.getElementById("viewer-img");
     const counter = document.getElementById("viewer-count");
     let activePhotos = [];
     let activeIndex = 0;
     let activeTitle = "";
     let activeFloor = "";
+    function fitViewerPhoto() {
+      if (!vimg.naturalWidth || !vimg.naturalHeight) return;
+      const maxWidth = Math.min(960, window.innerWidth - 48);
+      const maxHeight = Math.max(120, window.innerHeight - 124);
+      stage.style.width = `${Math.floor(Math.min(maxWidth, maxHeight * vimg.naturalWidth / vimg.naturalHeight))}px`;
+    }
+    vimg.addEventListener("load", fitViewerPhoto);
+    window.addEventListener("resize", fitViewerPhoto);
     function showPhoto(index) {
       activeIndex = (index + activePhotos.length) % activePhotos.length;
       vimg.src = activePhotos[activeIndex];
       vimg.alt = `${activeTitle} 공간 사진 ${activeIndex + 1}`;
       counter.textContent = `${activeIndex + 1} / ${activePhotos.length}`;
-      viewer.classList.toggle("real-floor-image", activeFloor === "1" || activeFloor === "2");
+      viewer.classList.toggle("real-floor-image", activeFloor !== "4");
       viewer.hidden = false;
+      if (vimg.complete) fitViewerPhoto();
     }
     function closeViewer() { viewer.hidden = true; }
     document.querySelectorAll(".floor").forEach(btn => {
@@ -121,7 +136,7 @@
         activePhotos = data.photos;
         activeTitle = data.title;
         activeFloor = btn.dataset.floor;
-        grid.classList.toggle("real-floor-images", activeFloor === "1" || activeFloor === "2");
+        grid.classList.toggle("real-floor-images", activeFloor !== "4");
         grid.innerHTML = data.photos.map((src, i) => `<button type="button" class="thumb" aria-label="${data.title} 사진 ${i + 1} 크게 보기"><img src="${src}" alt="${data.title} 공간 사진 ${i + 1}" loading="lazy"></button>`).join("");
         modal.hidden = false;
         grid.querySelectorAll(".thumb").forEach((th, i) => th.addEventListener("click", () => showPhoto(i)));
