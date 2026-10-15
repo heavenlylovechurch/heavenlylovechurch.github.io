@@ -61,6 +61,12 @@ a { color: inherit; text-decoration: none; }
 .nav a.active { color: #fff; }
 .page-inner .nav a { color: #6f675e; }
 .page-inner .nav a.active { color: var(--navy); }
+@media (min-width: 821px) and (max-width: 1050px) {
+  .header-inner { gap: 12px; }
+  .nav { gap: 8px; }
+  .nav a { font-size: 12px; }
+  .brand, .page-inner .brand { font-size: 14px; }
+}
 .menu-btn {
   display: none; border: 0; background: transparent;
   color: #fff; font-size: 20px; cursor: pointer;
@@ -242,6 +248,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 .tbl { width: 100%; border-collapse: collapse; margin: 10px 0 28px; font-size: 14px; }
+.worship-table { table-layout: fixed; }
+.worship-table th:nth-child(1) { width: 28%; }
+.worship-table th:nth-child(2) { width: 31%; }
+.worship-table th:nth-child(3) { width: 41%; }
 .tbl th { background: #2c4a5e; color: #fff; font-weight: 500; padding: 10px 12px; text-align: left; }
 .tbl td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
 .tbl tr:nth-child(even) td { background: #faf6ef; }
